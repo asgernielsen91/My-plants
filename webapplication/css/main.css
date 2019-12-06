@@ -1,0 +1,592 @@
+/*GLOBAL RULES*/
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+@import url("https://use.typekit.net/pog6zkp.css");
+
+/* ---------- root variables ---------- */
+:root {
+  --white: #ffffff;
+  --light-blue: #eef2f5;
+  --green-one: #bdd4b3;
+  --green-two: #8cb38f;
+  --green-three: #657e70;
+  --green-four: #475a5a;
+  --light-grey: #D6D6D6;
+  --text-color-light: #f1f1f1;
+  --text-color-dark: #8D8D8D;
+  --font-family: "futura-pt", sans-serif;
+}
+
+/* ---------- general styling ---------- */
+html {
+  color: var(--text-color-dark);
+  font-family: var(--font-family);
+  height: 100%;
+  text-align: center;
+  width: 100%;
+  font-weight: 200;
+}
+
+body {
+  margin: 0;
+  background: var(--light-blue);
+}
+
+h1 {
+  font-size: 2em;
+  font-weight: 300;
+  letter-spacing: 3px;
+}
+
+/* ---------- topbar styling ---------- */
+.topbar {
+  color: var(--text-color-light);
+  text-transform: uppercase;
+  background-image: url(../img/header_background.svg);
+  background-size: cover;
+  position: fixed;
+  width: 100%;
+  height: 15vh;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 9999;
+  border-bottom-left-radius: -30px;
+  border-bottom-right-radius: -30px;
+  padding: 0px 15px;
+}
+
+#myplants>.topbar {
+  padding: 0px 50px 0px 30px;
+}
+
+.topbar h3 {
+  color: var(--text-color-dark);
+  margin-top: 20px;
+  font-family: var(--font-family);
+  font-size: 30px;
+  text-transform: capitalize;
+  font-weight: 500;
+}
+
+.topbar a {
+  text-decoration: none;
+  position: absolute;
+  top: 20px;
+}
+
+.topbar a.left {
+  left: 20px;
+}
+
+.topbar a.right {
+  right: 20px;
+  top: 0;
+}
+
+/* ---------- tabbar styling ---------- */
+.tabbar {
+  background-color: inherit;
+  position: fixed;
+  width: 100%;
+  height: 8vh;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 9999;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+
+/* Style the links inside the navigation bar */
+.tabbar a {
+  display: inline-block;
+  color: var(--text-color-dark);
+  text-align: center;
+  padding-top: 12px;
+  width: 32.6%;
+  height: 100%;
+  text-decoration: none;
+  font-size: 0.8em;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  background-color: var(--white);
+}
+
+/* Change the color of links on hover */
+.tabbar a:hover {
+  background-color: var(--light-grey);
+  color: var(--text-color-dark);
+}
+
+/* Add a color to the active/current link */
+.tabbar a.active {
+  background-color: var(--light-blue);
+  color: var(--text-color-dark);
+}
+
+.tabbar>a>.active-tab {
+  color: var(--white);
+}
+
+.tabbar>a.active>.active-tab {
+  display: block;
+  color: var(--text-color-dark);
+}
+
+.tabbar>a {
+  font-size: 8px;
+  line-height: 0;
+}
+
+.tabbar>a>.material-icons {
+  height: 30px;
+  line-height: 25px;
+  font-size: 28px;
+}
+
+.tabbar>a>#notification {
+  color: red;
+  font-size: 15px;
+  display: none;
+  position: absolute;
+  margin: -12px 0px 0px 62px;
+}
+
+/* ---------- page styling ---------- */
+.page {
+  display: none;
+  /*min heigh is screen heigh minus height of tab and top bar */
+  height: 85vh;
+  bottom: 0;
+  animation: fadeIn 0.4s;
+  /* padding equals height of tabbar and topbar */
+  padding: 20px 0px 0px 0px;
+  margin-top: 20%;
+  background: var(--light-blue);
+}
+
+#login {
+  height: 100vh;
+  border-top-left-radius: 0px;
+  border-top-right-radius: 0px;
+  background-color: var(--light-blue);
+}
+
+#login>.topbar {
+  display: none;
+}
+
+/* Log out style */
+.topbar>.right {
+  width: 6%;
+  padding-bottom: 10px;
+}
+
+.right>.material-icons {
+  color: var(--text-color-dark);
+  font-size: 35px;
+  margin-top: 14px;
+}
+
+/* ---------- animations ---------- */
+/* fade in */
+@keyframes fadeIn {
+  from {
+    opacity: 0
+  }
+
+  to {
+    opacity: 1
+  }
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* ---------- loader styling ---------- */
+#loader {
+  position: fixed;
+  left: 0px;
+  top: 0px;
+  width: 100%;
+  height: 100%;
+  z-index: 9999999999;
+  overflow: hidden;
+  background: var(--loader-background-color);
+  text-align: center;
+}
+
+.spinner {
+  border: 5px solid var(--light-grey);
+  border-radius: 50%;
+  border-top: 5px solid var(--light-green);
+  width: 50px;
+  height: 50px;
+  -webkit-animation: spin 1s linear infinite;
+  /* Safari */
+  animation: spin 1s linear infinite;
+  display: inline-block;
+  vertical-align: middle;
+  position: absolute;
+  margin: auto;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+.hide {
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s 0.4s, opacity 0.4s linear;
+}
+
+/* login */
+.logo {
+  width: 20%;
+}
+
+#login {
+  padding-top: 60px;
+}
+
+#login>h4 {
+  color: var(--text-color-dark);
+  font-family: var(--font-family);
+}
+
+/* ---------- authentication styling ---------- */
+#firebaseui-auth-container {
+  position: absolute;
+  top: 50%;
+  width: 100%;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+.firebaseui-container {
+  font: 16px var(--font-family);
+  text-align: center;
+  background-color: inherit;
+  padding-top: 250px;
+}
+
+.firebaseui-title {
+  text-align: center;
+  font-weight: 400;
+  color: var(--text-color-dark);
+  letter-spacing: 0;
+}
+
+.firebaseui-button {
+  margin-left: 0px;
+  min-width: 200px;
+}
+
+.firebaseui-textfield {
+  background-color: var(--white);
+  border-radius: 30px;
+  padding-left: 15px;
+  padding-right: 15px;
+  height: 65px;
+  border-bottom: none;
+}
+
+.firebaseui-textfield.mdl-textfield .firebaseui-input {
+  border-bottom: none;
+}
+
+.firebaseui-error {
+  padding-top: 20px;
+}
+
+.firebaseui-card-actions>.firebaseui-form-actions {
+  display: flex;
+  flex-direction: column-reverse;
+}
+
+.firebaseui-input-toggle-blur {
+  margin-right: 10px;
+}
+
+.mdl-button--primary.mdl-button--primary {
+  color: var(--text-color-dark);
+}
+
+.mdl-textfield--floating-label .mdl-textfield__label {
+  padding-left: 15px;
+}
+
+.firebaseui-card-header {
+  border-bottom: none;
+}
+
+.mdl-textfield__input {
+  border-bottom: none;
+}
+
+.mdl-button--raised.mdl-button--colored,
+.mdl-button--raised.mdl-button--colored:active,
+.mdl-button--raised.mdl-button--colored:hover {
+  background-color: var(--green-two);
+  color: var(--white);
+  width: 100%;
+  border-radius: 30px;
+  text-align: center;
+  height: 65px;
+  letter-spacing: 0.1em;
+}
+
+.firebaseui-textfield.mdl-textfield .firebaseui-label::after {
+  background-color: var(--green);
+}
+
+.firebaseui-card-actions>.firebaseui-form-actions {
+  text-align: center;
+}
+
+.welcome-container {
+  color: var(--text-color-dark);
+  width: 80%;
+  margin: 0 auto;
+  font-family: var(--font-family);
+}
+
+.welcome-container>h2 {
+  margin: 40px 0 80px 0;
+}
+
+.welcome-container>.waves-effect>.material-icons {
+  color: var(--green-two);
+  padding-top: 40px;
+  font-size: 10rem;
+}
+
+/* Styling af Add side */
+.col>.card {
+  border-radius: 30px;
+  width: 90%;
+  margin: 0 auto;
+  display: inline-block;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+
+.row.row {
+  margin-bottom: 10px;
+}
+
+.card-image {
+  border-radius: 30px;
+  width: 100%;
+  height: 20vh;
+}
+
+.card-background-color-one {
+  background-color: var(--green-one);
+}
+
+.card-background-color-two {
+  background-color: var(--green-two);
+}
+
+.card-background-color-three {
+  background-color: var(--green-three);
+}
+
+.card-background-color-four {
+  background-color: var(--green-four);
+}
+
+.card-image>.waves-effect {
+  position: absolute;
+  display: block;
+  left: 0;
+  color: var(--white);
+  margin: 10px;
+}
+
+.card-image>.waves-effect>.material-icons {
+  font-size: 40px;
+}
+
+.col>.card>.card-image>img {
+  width: auto;
+  height: 100%;
+  display: inline-block;
+  margin-left: 58%;
+  padding: 10px;
+}
+
+.card>.card-image>.card-title>h3 {
+  margin-top: 0px;
+  font-family: var(--font-family);
+  font-size: 30px;
+}
+
+.added-plant-card-image {
+  border-bottom-left-radius: 0px;
+  border-bottom-right-radius: 0px;
+  height: auto;
+}
+
+#my-plants-container>.addedcard>.card-content {
+  border-radius: 0 0 30px 30px;
+}
+
+.card-content {
+  display: grid;
+  grid-template-columns: 25% 25% 25% 25%;
+  grid-template-rows: auto auto;
+  grid-row-gap: 30px;
+  width: 100%;
+  background-color: white;
+}
+
+.card-content .card-icon {
+  width: 40%;
+  justify-self: center;
+  align-self: center;
+}
+
+.card-content>p {
+  justify-self: start;
+  align-self: center;
+  color: var(--text-color-dark);
+}
+
+.cal-img {
+  width: 85%;
+  margin-left: 5px;
+  grid-column-start: 1;
+  grid-column-end: 5;
+  justify-self: center;
+}
+
+#myplants {
+  padding: 0;
+}
+
+#horizontal-wrapper {
+  overflow-x: scroll;
+  overflow-y: hidden;
+  white-space: nowrap;
+  height: 100%;
+}
+
+#my-plants-container {
+  width: 100%;
+  height: 90%;
+  padding-top: 15px;
+}
+
+#my-plants-container>.addedcard {
+  border-radius: 30px;
+  width: 80%;
+  margin: auto 5px;
+  display: inline-block;
+  height: 80%;
+  background-color: var(--light-blue);
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+
+#my-plants-container>.card>.added-plant-card-image {
+  height: 68%;
+}
+
+#my-plants-container>.card>.added-plant-card-image>img {
+  width: auto;
+  height: 98%;
+  margin: 0 auto;
+  padding: 30px 0px 10px 0px;
+  z-index: 12;
+}
+
+.added-plant-card-image>.waves-effect {
+  display: block;
+  right: 0;
+  left: auto;
+}
+
+.addedcard>.card-title {
+  top: 0;
+  text-align: center;
+  position: relative;
+  width: 100%;
+  z-index: 14;
+}
+
+.addedcard>.card-title>h3 {
+  margin-top: 0px;
+  font-family: var(--font-family);
+  font-weight: 500;
+  font-size: 30px;
+  color: var(--text-color-dark);
+}
+
+.switch>label {
+  font-size: 18px;
+  font-family: var(--font-family);
+  color: var(--text-color-dark);
+}
+
+/* STYILING FOR SEARCH BAR */
+.topbar>.search-container {
+  width: 100%;
+  height: 6vh;
+  background-color: var(--light-grey);
+  border-radius: 30px;
+  margin: 11px auto;
+}
+
+.topbar>.search-container>.search {
+  margin: 0 auto;
+  width: 75%;
+}
+
+textarea.materialize-textarea {
+  color: red;
+}
+
+.search-container>.search-icon {
+  position: absolute;
+  font-size: 30px;
+  display: block;
+  margin: 5px 0px 0px 5px;
+}
+
+.search-container>.photo-icon {
+  position: absolute;
+  font-size: 30px;
+  display: block;
+  margin: 5px 0px 0px 310px;
+}
+
+.topbar>.search-container>.search {
+  border-bottom: 0px;
+}
+
+#add-container>.container {
+  padding-bottom: 50px;
+}
+
+.topbar>.myplants-search-container {
+  width: 100%;
+}
+
+.calendar-img {
+  width: 100%;
+}

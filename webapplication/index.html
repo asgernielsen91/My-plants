@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>My Plants</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="Get started with HTML, CSS and JavaScript">
+  <meta name="author" content="Lærke Høj Lange, Asger Nielsen og Fie Johannsen">
+  <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css" />
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="https://use.typekit.net/pog6zkp.css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <link rel="shortcut icon" type="image/png" href="img/favicon.png" />
+</head>
+
+<body>
+  <!-- tabbar navigation -->
+  <nav id="tabbar" class="tabbar hide">
+    <a href="#add" onclick="showPage('add')">
+      <i class="material-icons">add</i><span class="active-tab">Add</span>
+    </a>
+
+    <a href="#myplants" onclick="showPage('myplants')">
+      <i id="notification" class="material-icons">fiber_manual_record</i>
+      <i class="material-icons">person</i><span class="active-tab">My Plants</span>
+    </a>
+    <a href="#calendar" onclick="showPage('calendar')">
+      <i class="material-icons">event_note</i><span class="active-tab">Calendar</span>
+    </a>
+  </nav>
+
+  <!-- pages -->
+  <!-- add page -->
+  <section id="add" class="page">
+    <header class="topbar">
+      <div class="search-container">
+        <i class="material-icons search-icon">search</i>
+        <i class="material-icons photo-icon">center_focus_strong</i>
+        <input class="search" type="search" placeholder="search" onkeyup="addSearch(this.value)">
+      </div>
+    </header>
+
+    <div id="add-container" class="col s12">
+      <div class="container">
+        <div class="row" id="plant-container"></div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- my plants page -->
+  <section id="myplants" class="page">
+    <header class="topbar">
+      <div class="search-container myplants-search-container">
+        <i class="material-icons search-icon">search</i>
+        <input class="search" type="search" placeholder="Search" onkeyup="myplantsSearch(this.value)">
+      </div>
+      <a class="right" href="#" onclick="logout()">
+        <i class="material-icons">exit_to_app</i>
+      </a>
+    </header>
+    <div id="horizontal-wrapper">
+      <div id="my-plants-container"></div>
+    </div>
+  </section>
+
+
+
+  <!-- calendar page -->
+  <section id="calendar" class="page">
+    <header class="topbar">
+      <h3>Calendar</h3>
+    </header>
+    <img class="calendar-img" src="img/calendar.png" alt="">
+  </section>
+
+  <section id="login" class="page">
+    <header class="topbar">
+    </header>
+    <img class="logo" src="img/logo.svg" alt="">
+    <h4>Welcome to My Plants</h4>
+    <!-- firebase auth container  -->
+    <section id="firebaseui-auth-container"></section>
+  </section>
+
+  <!-- loader  -->
+  <div id="loader">
+    <div class="spinner"></div>
+  </div>
+  <!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
+  <script src="https://www.gstatic.com/firebasejs/6.6.0/firebase-app.js"></script>
+  <!-- Add Firebase products that you want to use -->
+  <script src="https://www.gstatic.com/firebasejs/6.6.0/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/6.6.0/firebase-firestore.js"></script>
+  <script src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script>
+  <!-- Materialize -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+  <!-- main js file -->
+  <script src="js/main.js"></script>
+</body>
+
+</html>
